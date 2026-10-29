@@ -1,0 +1,23 @@
+{
+  "name": "3dglo",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/ula523/3DGlo#readme",
+  "bugs": {
+    "url": "https://github.com/ula523/3DGlo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ula523/3DGlo.git"
+  },
+  "license": "ISC",
+  "author": "Ulyana",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^7.2.3"
+  }
+}
