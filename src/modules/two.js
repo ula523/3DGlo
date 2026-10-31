@@ -1,2 +1,5 @@
+const two = () => {
+    console.log("Второй модуль");
+};
 
-console.log("Второй модуль");
+module.exports = two;

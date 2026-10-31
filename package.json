@@ -13,11 +13,13 @@
   "license": "ISC",
   "author": "Ulyana",
   "type": "commonjs",
-  "main": "script.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "build": "webpack --mode production",
+  "watch": "webpack --mode development --watch"
+},
   "devDependencies": {
-    "webpack-cli": "^7.2.3"
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1"
   }
 }
