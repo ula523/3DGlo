@@ -58,3 +58,34 @@ const updateClock = () => {
 const intervalId = setInterval(updateClock, 1000);
 
 updateClock()
+
+
+/////////////////// Анимация
+
+const ship = document.getElementById('ship')
+
+let count = 0
+let idInterval
+let active = false
+
+const flyAnimate = () => {
+    count++
+    idInterval = requestAnimationFrame(flyAnimate)
+
+    if (count < 200) {
+        ship.style.left = count * 3 + 'px'
+    } else {
+        cancelAnimationFrame(idInterval)
+    }
+}
+document.addEventListener('click', () => {
+    if(active) {
+         cancelAnimationFrame(idInterval)
+         active = false
+
+    } else {
+        idInterval = requestAnimationFrame(flyAnimate)
+        active = true
+    }
+})
+
