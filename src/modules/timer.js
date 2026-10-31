@@ -6,7 +6,7 @@ const timer = (deadline) => {
 
     const getTimerRemaining = () => {
     let dateStop = new Date(deadline).getTime()
-    let dateNow = new Date().getTime()
+    let dateNow = new Date().getTime()//текущее время компьютера
     let timeRemaining = (dateStop - dateNow) / 1000 //количество cек до дедлайна
     let hours = Math.floor(timeRemaining / 60 / 60)
     let minutes = Math.floor((timeRemaining / 60) % 60)
@@ -23,14 +23,22 @@ const timer = (deadline) => {
     const updateClock = () => {
     let getTime = getTimerRemaining()
         
-    timerHours.textContent = getTime.hours
-    timerMinutes.textContent = getTime.minutes
-    timerSeconds.textContent = getTime.seconds
+    timerHours.textContent = String(getTime.hours).padStart(2, '0');
+    timerMinutes.textContent = String(getTime.minutes).padStart(2, '0');
+    timerSeconds.textContent = String(getTime.seconds).padStart(2, '0');
 
-    if(getTime.timeRemaining > 0) {
-         setTimeout(updateClock, 1000) //вызывает функцию каждую сек.
+    if(getTime.timeRemaining > 0) { 
+     setInterval(updateClock, 1000); //вызывает функцию каждую сек.
 
     }
+    else {
+    timerHours.textContent = '00'
+    timerMinutes.textContent = '00'
+    timerSeconds.textContent = '00'
+
+    }
+
+   // console.log(interval);
    
     }
     updateClock()
