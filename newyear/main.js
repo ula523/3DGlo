@@ -62,30 +62,55 @@ updateClock()
 
 /////////////////// Анимация
 
-const ship = document.getElementById('ship')
+const ship = document.getElementById('ship');
+const toggle = document.getElementById('toggle');
+const reset = document.getElementById('reset');
 
-let count = 0
-let idInterval
-let active = false
+let count = 0;
+let animationId = null;
+let active = false;
 
 const flyAnimate = () => {
-    count++
-    idInterval = requestAnimationFrame(flyAnimate)
+    if (!active) {
+        return;
+    }
+
+    count++;
+
+    ship.style.left = `${count * 3}px`;
 
     if (count < 200) {
-        ship.style.left = count * 3 + 'px'
+        animationId = requestAnimationFrame(flyAnimate);
     } else {
-        cancelAnimationFrame(idInterval)
+        active = false;
+        animationId = null;
+        toggle.textContent = 'Запустить';
     }
-}
-document.addEventListener('click', () => {
-    if(active) {
-         cancelAnimationFrame(idInterval)
-         active = false
+};
 
+toggle.addEventListener('click', () => {
+    if (active) {
+        active = false;
+        cancelAnimationFrame(animationId);
+
+        toggle.textContent = 'Продолжить';
     } else {
-        idInterval = requestAnimationFrame(flyAnimate)
-        active = true
+        active = true;
+        animationId = requestAnimationFrame(flyAnimate);
+
+        toggle.textContent = 'Пауза';
     }
-})
+});
+
+reset.addEventListener('click', () => {
+    active = false;
+
+    cancelAnimationFrame(animationId);
+
+    animationId = null;
+    count = 0;
+
+    ship.style.left = '0px';
+    toggle.textContent = 'Запустить';
+});
 
