@@ -15,7 +15,27 @@
   \**********************/
 (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("{const timer = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\r\n//const two = require('./modules/two');\r\n\r\ntimer('8 november 2026'); //вызывает таймер и указывает дедлайн\r\n//two();\n\n//# sourceURL=webpack://3dglo/./src/index.js?\n}");
+eval("{const timer = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\r\nconst menu = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\r\nconst modal = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\r\n\r\ntimer('8 november 2026'); //вызывает таймер и указывает дедлайн\r\nmenu();\r\nmodal();\n\n//# sourceURL=webpack://3dglo/./src/index.js?\n}");
+
+/***/ },
+
+/***/ "./src/modules/menu.js"
+/*!*****************************!*\
+  !*** ./src/modules/menu.js ***!
+  \*****************************/
+(module) {
+
+eval("{const menu = () => {\r\n    const menuBtn = document.querySelector('.menu')\r\n    const menu = document.querySelector('menu')\r\n    const closeBtn = document.querySelector('.close-btn')\r\n    const menuItems = menu.querySelectorAll('ul>li>a')\r\n\r\n    const handleMenu = () => {\r\n       /*   if (!menu.style.transform) {//если инлайн свойства нет\r\n        menu.style.transform = `translateX(0)`//открывает меню\r\n        } else {\r\n        menu.style.transform = ``//закрывает меню\r\n        }*/\r\n       menu.classList.toggle('active-menu');\r\n    }\r\n\r\n    menuBtn.addEventListener('click', handleMenu)\r\n    closeBtn.addEventListener('click', handleMenu)\r\n\r\n   /* for (let i = 0; i < menuItems.length; i++) { \r\n        menuItems[i].addEventListener('click', handleMenu)\r\n    }*/\r\n\r\n    menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu)) //клик по ссылке в меню\r\n\r\n}\r\n\r\nmodule.exports = menu;\n\n//# sourceURL=webpack://3dglo/./src/modules/menu.js?\n}");
+
+/***/ },
+
+/***/ "./src/modules/modal.js"
+/*!******************************!*\
+  !*** ./src/modules/modal.js ***!
+  \******************************/
+(module) {
+
+eval("{const modal = () => {\r\n\r\n    const buttons = document.querySelectorAll('.popup-btn')\r\n    const modal = document.querySelector('.popup')\r\n    const closeBtn = modal.querySelector('.popup-close')\r\n\r\n\r\n    buttons.forEach(btn => {\r\n        btn.addEventListener('click', () => {\r\n            modal.style.display = 'block';\r\n        })\r\n    })\r\n\r\n    closeBtn.addEventListener('click', () => {\r\n         modal.style.display = 'none';\r\n    })\r\n\r\n  \r\n\r\n}\r\n\r\nmodule.exports = modal;\n\n//# sourceURL=webpack://3dglo/./src/modules/modal.js?\n}");
 
 /***/ },
 

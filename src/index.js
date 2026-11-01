@@ -1,5 +1,7 @@
 const timer = require('./modules/timer');
-//const two = require('./modules/two');
+const menu = require('./modules/menu');
+const modal = require('./modules/modal');
 
 timer('8 november 2026'); //вызывает таймер и указывает дедлайн
-//two();
+menu();
+modal();
