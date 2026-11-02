@@ -7,12 +7,10 @@ const content = () => {
 
  // разрешен ввод цифр 
 calcInput.forEach((input) => {
-
-  input.addEventListener('input', (e) => {
-   
-    e.target.value = e.target.value.replace(/[^\d()-]/g, '');
+    input.addEventListener('input', (e) => {
+   e.target.value = e.target.value.replace(/\D+/g, '');
+    })
   })
-})
 
 
 // ввод только кириллицы в любом регистре, дефиса и пробела
