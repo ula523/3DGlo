@@ -15,7 +15,17 @@
   \**********************/
 (__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("{const timer = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\r\nconst menu = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\r\nconst modal = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\r\n\r\ntimer('8 november 2026'); //вызывает таймер и указывает дедлайн\r\nmenu();\r\nmodal();\n\n//# sourceURL=webpack://3dglo/./src/index.js?\n}");
+eval("{const timer = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\r\nconst menu = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\r\nconst modal = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\r\nconst content = __webpack_require__(/*! ./modules/content */ \"./src/modules/content.js\");\r\n\r\ntimer('8 november 2026'); //вызывает таймер и указывает дедлайн\r\nmenu();\r\nmodal();\r\ncontent();\n\n//# sourceURL=webpack://3dglo/./src/index.js?\n}");
+
+/***/ },
+
+/***/ "./src/modules/content.js"
+/*!********************************!*\
+  !*** ./src/modules/content.js ***!
+  \********************************/
+(module) {
+
+eval("{const content = () => {\r\n  const calcInput = document.querySelectorAll('.calc-block input')\r\n  const typeText = document.querySelectorAll('input[type=\"text\"], [placeholder=\"Ваше сообщение\"]')\r\n  const typeEmail = document.querySelectorAll('input[type=\"email\"]')\r\n  const typeTel = document.querySelectorAll('input[type=\"tel\"]')\r\n\r\n\r\n // разрешен ввод цифр \r\ncalcInput.forEach((input) => {\r\n\r\n  input.addEventListener('input', (e) => {\r\n   \r\n    e.target.value = e.target.value.replace(/[^\\d()-]/g, '');\r\n  })\r\n})\r\n\r\n\r\n// ввод только кириллицы в любом регистре, дефиса и пробела\r\ntypeText.forEach((input) => {\r\n  input.addEventListener('input', (e) => {\r\n    \r\n    e.target.value = e.target.value.replace(/[^а-яё\\s-]/gi, '');\r\n  })\r\n})\r\n\r\n   //ввод только латиницы в любом регистре, цифры и спецсимволы\r\n\r\ntypeEmail.forEach((input) => {\r\n  input.addEventListener('input', (e) => {\r\n     \r\n    e.target.value = e.target.value.replace(/[^a-z0-9@_.\\!~*'-]/gi, '');\r\n  })\r\n})\r\n\r\n//ввод только цифр, круглых скобок и дефис\r\n\r\ntypeTel.forEach((input) => {\r\n\r\n  input.addEventListener('input', (e) => {\r\n   \r\n    e.target.value = e.target.value.replace(/[^\\d()-]/g, '');\r\n  })\r\n})\r\n\r\nconsole.log(calcInput);\r\n\r\n\r\n}\r\n\r\nmodule.exports = content;\n\n//# sourceURL=webpack://3dglo/./src/modules/content.js?\n}");
 
 /***/ },
 
