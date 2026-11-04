@@ -40,7 +40,7 @@ typeTel.forEach((input) => {
   })
 })
 
-console.log(calcInput);
+//console.log(calcInput);
 
 
 }
