@@ -1,27 +1,32 @@
 const menu = () => {
-    const menuBtn = document.querySelector('.menu')
-    const menu = document.querySelector('menu')
-    const closeBtn = document.querySelector('.close-btn')
-    const menuItems = menu.querySelectorAll('ul>li>a')
-
-    const handleMenu = () => {
-       /*   if (!menu.style.transform) {//если инлайн свойства нет
-        menu.style.transform = `translateX(0)`//открывает меню
-        } else {
-        menu.style.transform = ``//закрывает меню
-        }*/
-       menu.classList.toggle('active-menu');
+ const menuElement = document.querySelector('menu');
+ 
+  document.addEventListener('click', (e) => {
+   
+    if (e.target.closest('.menu')) { 
+      menuElement.classList.add('active-menu');
+      return;
     }
 
-    menuBtn.addEventListener('click', handleMenu)
-    closeBtn.addEventListener('click', handleMenu)
+   
+    if (!menuElement.contains(e.target)) {
+        
+        return;
+        
+    }
 
-   /* for (let i = 0; i < menuItems.length; i++) { 
-        menuItems[i].addEventListener('click', handleMenu)
-    }*/
+    const closeBtn = e.target.closest('.close-btn');
+    const menuItem = e.target.closest('ul > li > a');
 
-    menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu)) //клик по ссылке в меню
+    
+    if (closeBtn || menuItem) {// закрытие по крестику или пункту меню
+      menuElement.classList.remove('active-menu');
+    }
+  })
 
+ // console.log(menuElement);
 }
+
+
 
 module.exports = menu;

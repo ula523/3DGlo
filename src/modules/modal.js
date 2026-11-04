@@ -31,7 +31,7 @@ const modal = () => {
 
         if (document.documentElement.clientWidth < 768) {
             modal.style.display = 'none';
-            return;
+           return;
         }
 
         let opacity = 1;
@@ -44,6 +44,13 @@ const modal = () => {
                 modal.style.display = 'none';
             }
         }, 10)
+    })
+    modal.addEventListener('click', (e) => {
+        if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close'))  {//проверка есть ли класс popup-close
+            modal.style.display = 'none'; // модалка закрывается
+        }
+ 
+
     })
 }
 
