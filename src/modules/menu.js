@@ -1,30 +1,23 @@
 const menu = () => {
- const menuElement = document.querySelector('menu');
+const menuElement = document.querySelector('menu')
  
-  document.addEventListener('click', (e) => {
-   
-    if (e.target.closest('.menu')) { 
-      menuElement.classList.add('active-menu');
+
+  const toggleMenu = (event) => {
+    const target = event.target;
+
+    if (target.closest('.menu')) {
+      menuElement.classList.toggle('active-menu');
       return;
     }
 
-   
-    if (!menuElement.contains(e.target)) {
-        
-        return;
-        
-    }
-
-    const closeBtn = e.target.closest('.close-btn');
-    const menuItem = e.target.closest('ul > li > a');
-
     
-    if (closeBtn || menuItem) {// закрытие по крестику или пункту меню
-      menuElement.classList.remove('active-menu');
+    if (target.closest('.close-btn') || target.closest('ul > li > a') || !menuElement.contains(target)) {
+      menuElement.classList.remove('active-menu'); // закрытие по крестику, пункту меню или клику вне меню
     }
-  })
+  }
 
- // console.log(menuElement);
+  document.addEventListener('click', toggleMenu);
+
 }
 
 

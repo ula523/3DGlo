@@ -35,7 +35,7 @@ eval("{const content = () => {\r\n  const calcInput = document.querySelectorAll(
   \*****************************/
 (module) {
 
-eval("{const menu = () => {\r\n const menuElement = document.querySelector('menu');\r\n \r\n  document.addEventListener('click', (e) => {\r\n   \r\n    if (e.target.closest('.menu')) { \r\n      menuElement.classList.add('active-menu');\r\n      return;\r\n    }\r\n\r\n   \r\n    if (!menuElement.contains(e.target)) {\r\n        \r\n        return;\r\n        \r\n    }\r\n\r\n    const closeBtn = e.target.closest('.close-btn');\r\n    const menuItem = e.target.closest('ul > li > a');\r\n\r\n    \r\n    if (closeBtn || menuItem) {// закрытие по крестику или пункту меню\r\n      menuElement.classList.remove('active-menu');\r\n    }\r\n  })\r\n\r\n // console.log(menuElement);\r\n}\r\n\r\n\r\n\r\nmodule.exports = menu;\n\n//# sourceURL=webpack://3dglo/./src/modules/menu.js?\n}");
+eval("{const menu = () => {\r\nconst menuElement = document.querySelector('menu')\r\n \r\n\r\n  const toggleMenu = (event) => {\r\n    const target = event.target;\r\n\r\n    if (target.closest('.menu')) {\r\n      menuElement.classList.toggle('active-menu');\r\n      return;\r\n    }\r\n\r\n    \r\n    if (target.closest('.close-btn') || target.closest('ul > li > a') || !menuElement.contains(target)) {\r\n      menuElement.classList.remove('active-menu'); // закрытие по крестику, пункту меню или клику вне меню\r\n    }\r\n  }\r\n\r\n  document.addEventListener('click', toggleMenu);\r\n\r\n}\r\n\r\n\r\n\r\nmodule.exports = menu;\n\n//# sourceURL=webpack://3dglo/./src/modules/menu.js?\n}");
 
 /***/ },
 
