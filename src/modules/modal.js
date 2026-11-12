@@ -1,55 +1,46 @@
+const { animate } = require("./helpers");
+
 const modal = () => {
   const buttons = document.querySelectorAll(".popup-btn");
   const modal = document.querySelector(".popup");
   const closeBtn = modal.querySelector(".popup-close");
+  const popupContent = modal.querySelector(".popup-content");
+
+  const closeModal = () => {
+    modal.style.display = "none";
+  };
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       modal.style.display = "block";
 
       if (document.documentElement.clientWidth < 768) {
-        modal.style.opacity = 1;
+        popupContent.style.opacity = 1;
         return;
       }
 
-      let opacity = 0;
-      modal.style.opacity = opacity;
+      popupContent.style.opacity = 0;
 
-      const timer = setInterval(() => {
-        opacity += 0.05;
-        modal.style.opacity = opacity;
-
-        if (opacity >= 1) {
-          clearInterval(timer);
-        }
-      }, 20);
+      animate({
+        duration: 1000,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          popupContent.style.opacity = progress;
+        },
+      });
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    if (document.documentElement.clientWidth < 768) {
-      modal.style.display = "none";
-      return;
-    }
+  closeBtn.addEventListener("click", closeModal);
 
-    let opacity = 1;
-    const timer = setInterval(() => {
-      opacity -= 0.05;
-      modal.style.opacity = opacity;
-
-      if (opacity <= 0) {
-        clearInterval(timer);
-        modal.style.display = "none";
-      }
-    }, 10);
-  });
   modal.addEventListener("click", (e) => {
     if (
       !e.target.closest(".popup-content") ||
       e.target.classList.contains("popup-close")
     ) {
-      //проверка есть ли класс popup-close
-      modal.style.display = "none"; // модалка закрывается
+      closeModal();
     }
   });
 };
